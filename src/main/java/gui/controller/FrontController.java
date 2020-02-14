@@ -70,7 +70,7 @@ public class FrontController extends HttpServlet
 		if (isValidUrl(navi)) {
 			request.setAttribute("url", requestedUrl);
 		} else {
-			request.setAttribute("url", "/WEB-INF/pages/jsp/error/error.jsp");
+			request.setAttribute("url", "/WEB-INF/pages/jsp/error.jsp");
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher(LAYOUT_SEITE);

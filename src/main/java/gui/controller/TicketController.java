@@ -27,7 +27,7 @@ public class TicketController implements Controller {
 				request.setAttribute("message", TicketMachine.BYE_MESSAGE);
 			}
 		}
-		return "/tickets";
+		return null;
 	}
 
 }
