@@ -30,7 +30,7 @@ total Value: <c:out value="${totalValue }€"></c:out><br>
 	</c:forEach>
 </table>
 <br>
-Offers
+Offers:
 <form action="<c:url value='/service.do'/>" method="post" id="newOffer"></form>
 <table>
 	<tr>

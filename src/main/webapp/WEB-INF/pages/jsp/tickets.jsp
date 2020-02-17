@@ -15,7 +15,7 @@
  		<form action="<c:url value='/tickets.do'/>" method="post">
  			<input type="hidden" name="chosenOffer" value="<c:out value='${chosenOffer}'/>" />
  			<input type="hidden" name="toPay" value="<c:out value='${toPay}'/>" />
-       		<input type="text" name="coin" value="" placeholder="Type in your coin" required />
+       		<input type="text" name="coin" value="" placeholder="Type in your coin" autofocus="autofocus" required />
        		<input type = "submit" value = "pay">
        	</form>
  	</c:if>
