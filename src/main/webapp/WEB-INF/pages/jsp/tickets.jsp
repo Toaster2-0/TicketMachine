@@ -11,7 +11,7 @@
        		<input type = "submit" value = "buy">
        	</form>
  	</c:forEach>
- 	<c:if test="${chosenOffer!=null||toPay>0}">
+ 	<c:if test="${chosenOffer!=null&&toPay>0}">
  		<form action="<c:url value='/tickets.do'/>" method="post">
  			<input type="hidden" name="chosenOffer" value="<c:out value='${chosenOffer}'/>" />
  			<input type="hidden" name="toPay" value="<c:out value='${toPay}'/>" />
