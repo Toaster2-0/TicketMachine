@@ -29,7 +29,7 @@ public class FrontController extends HttpServlet
 		controller = new HashMap<String, Controller>();
 		controller.put("/tickets", new TicketController());
 		controller.put("/service", new ServiceController());
-		controller.put("/empty", new EmptyController());
+		//controller.put("/empty", new EmptyController());
 
 
 		System.out.println("Frontcontroller initialisiert");
@@ -63,6 +63,7 @@ public class FrontController extends HttpServlet
 			error.append(e.getMessage());
 			e.printStackTrace();
 			navi = "/empty";
+			request.setAttribute("forward", request.getRequestURI().substring(request.getContextPath().length()));
 		}
 
 		request.setAttribute("error", error.toString());
@@ -85,7 +86,7 @@ public class FrontController extends HttpServlet
 	}
 	
 	private boolean isValidUrl(String url) {
-		if (controller.get(url) != null) {
+		if (controller.get(url) != null||url=="/empty") {
 			return true;
 		}
 		return false;
