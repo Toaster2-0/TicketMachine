@@ -12,6 +12,9 @@
     <link rel="STYLESHEET" type="text/css" href="<c:url value="/include/stylesheet.css"/>">
   </head>
        <body> 
+	       <c:if test="${error!=null }">
+				<font color="red"><c:out value="${error }"/></font>
+			</c:if>
             <div id="inhalt">
                 <c:import url="${url}"></c:import>
             </div>    

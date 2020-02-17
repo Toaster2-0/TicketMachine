@@ -37,7 +37,7 @@ public class FrontController extends HttpServlet
 	 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
-		StringBuffer meldung = new StringBuffer();
+		StringBuffer error = new StringBuffer();
 		// /mvc/test/eins.do ohne /mvc und .do ==> /test/eins
 		String navi = request.getRequestURI().substring( // /mvc/test/eins.do
 				request.getContextPath().length(),		// /mvc
@@ -50,7 +50,7 @@ public class FrontController extends HttpServlet
 			Controller c = controller.get(navi);
 			if (c != null)
 			{
-				String neueNavi = c.execute(request, response, meldung);
+				String neueNavi = c.execute(request, response, error);
 				if (neueNavi != null) {
 					navi = neueNavi;
 					System.out.println("NEU: " + navi + "----------------------******************------------------------");
@@ -59,11 +59,11 @@ public class FrontController extends HttpServlet
 		}
 		catch (Exception e)
 		{
-			//meldung.append(e.toString());
+			error.append(e.getMessage());
 			e.printStackTrace();
 		}
 
-		request.setAttribute("notifications", meldung.toString());
+		request.setAttribute("error", error.toString());
 		String requestedUrl = "/WEB-INF/pages/jsp" + navi + ".jsp";
 		
 		System.out.println(requestedUrl);

@@ -163,11 +163,16 @@ public class TicketMachine {
 		offers.remove(title);
 	}
 	public void addOffer(String title, int price) throws ValidierungsException {
-		if(title!=""&&price>=0) {
-			offers.put(title, price);
-		}else {
-			throw new ValidierungsException("Title cant be emty or price cant be lower than 0");
+		if(title=="") {
+			throw new ValidierungsException("Title can't be emty");
 		}
+		if(price<0) {
+			throw new ValidierungsException("Price can't be lower than 0");
+		}
+		if(title.contains(";")) {
+			throw new ValidierungsException("Semicolonexception D:");
+		}
+		offers.put(title, price);
 	}
 	public Map<String, Integer> getOffers() {
 		return offers;

@@ -2,6 +2,8 @@ package gui.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,14 +36,13 @@ public class ServiceController implements Controller {
 		if (request.getParameter("removeOffer")!=null) {
 			t.removeOffer(request.getParameter("removeOffer"));
 		}
-		System.out.println(request.getParameter("ticketname"));
 		if(request.getParameter("ticketname")!=null && request.getParameter("ticketcost")!=null) {
 			String ticketname = request.getParameter("ticketname");
 			int ticketcost = Integer.parseInt(request.getParameter("ticketcost"));
 			t.addOffer(ticketname, ticketcost);
 		}
 		request.setAttribute("totalValue", MoneyBag.centToEuro(t.getTotalValue()));
-		Map<Integer, Integer> money = new HashMap<>();
+		SortedMap<Integer, Integer> money = new TreeMap<>();
 		for(int i= 0; i < MoneyBag.money.length; i++) {
 			money.put(MoneyBag.money[i], t.getMoneyLeft(i));
 		}
