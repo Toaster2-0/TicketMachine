@@ -9,6 +9,7 @@ import java.util.Scanner;
 import main.MoneyBag;
 
 import exceptions.MoneyException;
+import exceptions.ValidierungsException;
 
 
 public class TicketMachine {
@@ -85,7 +86,12 @@ public class TicketMachine {
 		}
 		if(s == null) {
 			s = new TicketMachine(new MoneyBag(10000, 10000, 10000, 1000, 1000, 1000, 100, 100, 10, 10, 10, 10));
-			s.addOffer("TagesKarte", 50);
+			try {
+				s.addOffer("TagesKarte", 50);
+			} catch (ValidierungsException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return s;
 		
@@ -156,8 +162,12 @@ public class TicketMachine {
 	public void removeOffer(String title) {
 		offers.remove(title);
 	}
-	public void addOffer(String title, int price) {
-		offers.put(title, price);
+	public void addOffer(String title, int price) throws ValidierungsException {
+		if(title!=""&&price>=0) {
+			offers.put(title, price);
+		}else {
+			throw new ValidierungsException("Title cant be emty or price cant be lower than 0");
+		}
 	}
 	public Map<String, Integer> getOffers() {
 		return offers;
