@@ -28,6 +28,7 @@ public class FrontController extends HttpServlet
 	public void init() throws ServletException {
 		controller = new HashMap<String, Controller>();
 		controller.put("/tickets", new TicketController());
+		controller.put("/service", new ServiceController());
 
 
 		System.out.println("Frontcontroller initialisiert");

@@ -11,7 +11,6 @@ public class TicketController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
-		System.out.println(request.getParameter("toPay"));
 		TicketMachine t = Singleton.getInstance().getTicketMachine();
 		if(request.getParameter("chosenOffer")==null) {
 			request.setAttribute("message", TicketMachine.WELCOME_MESSAGE);
@@ -26,6 +25,7 @@ public class TicketController implements Controller {
 			if((int)request.getAttribute("toPay")<=0) {
 				request.setAttribute("change", t.changeMoney((int)request.getAttribute("toPay")*-1));
 				request.setAttribute("message", TicketMachine.BYE_MESSAGE);
+				t.save();
 			}
 		}
 		return null;

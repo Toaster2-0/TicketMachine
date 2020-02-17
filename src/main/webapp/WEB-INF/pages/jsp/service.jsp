@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>         
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-total Ammount: <c:out value="${totalAmmount }"></c:out>
+total Value: <c:out value="${totalValue }"></c:out>
 <c:forEach var="coin" items="${coins }">
 	<c:out value="${coin.getValue() }x"></c:out><c:out value=" "></c:out><c:out value="${coin.getKey() }"></c:out>
 	<form action='<c:url value='/service.do'/>' method="post">
@@ -17,7 +17,7 @@ total Ammount: <c:out value="${totalAmmount }"></c:out>
 <c:forEach var="thisOffer" items="${offers }">
 	<form action="<c:url value='/service.do'/>" method="post">
 		<c:out value="${thisOffer.getKey()}"/><c:out value=" for " /><c:out value="${thisOffer.getValue()}" />
-		<input type="hidden" name="chosenOffer" value="<c:out value='${thisOffer.getKey()}'/>" />
+		<input type="hidden" name="removeOffer" value="<c:out value='${thisOffer.getKey()}'/>" />
 		<input type = "submit" value = "remove">
 	</form>
 </c:forEach>

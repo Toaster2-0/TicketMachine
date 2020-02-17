@@ -136,8 +136,23 @@ public class TicketMachine {
 		}
 		return change;
 	}
+	public void setMoney(int index, int newValue) throws MoneyException {
+		if(newValue<0) {
+			throw new MoneyException("you can't insert less than 0");
+		}
+		storage.setMoney(index, newValue);
+	}
 	
-	
+	public int getMoneyLeft(int index) {
+		try {
+			return storage.getMoneyLeft(index);
+		} catch (MoneyException e) {
+			return 0;
+		}
+	}
+	public int getTotalValue() {
+		return storage.getTotalValue();
+	}
 	public void removeOffer(String title) {
 		offers.remove(title);
 	}

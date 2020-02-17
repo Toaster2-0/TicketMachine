@@ -33,6 +33,17 @@ public class MoneyBag {
 		this.fiftyEuro = fiftyEuro;
 	}
 	
+	public int getTotalValue() {
+		int totalValue=0;
+		for (int i= 0; i < money.length;i++) {
+			try {
+				totalValue += money[i]*getMoneyLeft(i);
+			} catch (MoneyException e) {
+			}
+		}
+		return totalValue;
+	}
+	
 	public static int getIndexByValue(int value) throws MoneyException {
 		for(int i = 0; i < money.length; i++) {
 			if(money[i]==value) {

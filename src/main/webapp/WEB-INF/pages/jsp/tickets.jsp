@@ -21,7 +21,7 @@
  	</c:if>
 	<c:if test="${toPay<=0 }">
 		<c:if test="${toPay<0 }">
-	 		<c:out value="your Change" /><br>
+	 		<c:out value="your Change:" /><br>
 	 	</c:if>
 	   	<c:forEach var="changeCoin" items="${change}">
 	 		<c:out value="Here is one " /><c:out value="${changeCoin}" /><c:out value=" cent coin" /><br>
