@@ -34,7 +34,7 @@ Offers:
 <form action="<c:url value='/service.do'/>" method="post" id="newOffer"></form>
 <table>
 	<tr>
-		<td ALIGN="RIGHT">title</td><td ALIGN="RIGHT">Cost</td>
+		<td ALIGN="RIGHT">Title</td><td ALIGN="RIGHT">Cost</td>
 	</tr>
 	<c:forEach var="thisOffer" items="${offers }">
 			<tr>

@@ -50,7 +50,7 @@ public class MoneyBag {
 				return i;
 			}
 		}
-		throw new MoneyException("I guess here counterfeiter, because this is no coin");
+		throw new MoneyException("I guess here is a counterfeiter, because this is no coin");
 	}
 	public void setMoney(int index, int newValue) throws MoneyException {
 		switch (index) {
@@ -127,78 +127,6 @@ public class MoneyBag {
 	}
 	public static float centToEuro(int cent) {
 		return (float) (cent/100.0);
-	}
-	public int getOneCent() {
-		return oneCent;
-	}
-	public void setOneCent(int oneCent) {
-		this.oneCent = oneCent;
-	}
-	public int getTwoCent() {
-		return twoCent;
-	}
-	public void setTwoCent(int twoCent) {
-		this.twoCent = twoCent;
-	}
-	public int getFiveCent() {
-		return fiveCent;
-	}
-	public void setFiveCent(int fiveCent) {
-		this.fiveCent = fiveCent;
-	}
-	public int getTenCent() {
-		return tenCent;
-	}
-	public void setTenCent(int tenCent) {
-		this.tenCent = tenCent;
-	}
-	public int getTwentyCent() {
-		return twentyCent;
-	}
-	public void setTwentyCent(int twentyCent) {
-		this.twentyCent = twentyCent;
-	}
-	public int getFiftyCent() {
-		return fiftyCent;
-	}
-	public void setFiftyCent(int fiftyCent) {
-		this.fiftyCent = fiftyCent;
-	}
-	public int getOneEuro() {
-		return oneEuro;
-	}
-	public void setOneEuro(int oneEuro) {
-		this.oneEuro = oneEuro;
-	}
-	public int getTwoEuro() {
-		return twoEuro;
-	}
-	public void setTwoEuro(int twoEuro) {
-		this.twoEuro = twoEuro;
-	}
-	public int getFiveEuro() {
-		return fiveEuro;
-	}
-	public void setFiveEuro(int fiveEuro) {
-		this.fiveEuro = fiveEuro;
-	}
-	public int getTenEuro() {
-		return tenEuro;
-	}
-	public void setTenEuro(int tenEuro) {
-		this.tenEuro = tenEuro;
-	}
-	public int getTwentyEuro() {
-		return twentyEuro;
-	}
-	public void setTwentyEuro(int twentyEuro) {
-		this.twentyEuro = twentyEuro;
-	}
-	public int getFiftyEuro() {
-		return fiftyEuro;
-	}
-	public void setFiftyEuro(int fiftyEuro) {
-		this.fiftyEuro = fiftyEuro;
 	}
 	
 	
