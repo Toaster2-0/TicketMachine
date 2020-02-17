@@ -11,17 +11,18 @@ public class TicketController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
+		System.out.println(request.getParameter("toPay"));
 		TicketMachine t = Singleton.getInstance().getTicketMachine();
 		if(request.getParameter("chosenOffer")==null) {
 			request.setAttribute("message", TicketMachine.WELCOME_MESSAGE);
 			request.setAttribute("offer", t.getOffers());
-		}else if(request.getAttribute("toPay")==null) {
-			request.setAttribute("chosenOffer", request.getParameter("chosenOffer"));
+		}else if(request.getParameter("toPay")==null) {
 			request.setAttribute("chosenOffer", request.getParameter("chosenOffer"));
 			request.setAttribute("toPay", t.getOffers().get(request.getAttribute("chosenOffer")));
 		}else if(Integer.parseInt(request.getParameter("toPay"))>=0) {
-			request.setAttribute("toPay", request.getParameter("toPay"));
+			request.setAttribute("toPay", Integer.parseInt(request.getParameter("toPay")));
 			request.setAttribute("toPay", (int)request.getAttribute("toPay")-t.pay(""+request.getParameter("coin")));
+			request.setAttribute("chosenOffer", request.getParameter("chosenOffer"));
 			if((int)request.getAttribute("toPay")<=0) {
 				request.setAttribute("change", t.changeMoney((int)request.getAttribute("toPay")*-1));
 				request.setAttribute("message", TicketMachine.BYE_MESSAGE);
