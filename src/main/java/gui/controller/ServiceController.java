@@ -39,7 +39,7 @@ public class ServiceController implements Controller {
 			int ticketcost = Integer.parseInt(request.getParameter("ticketcost"));
 			t.addOffer(ticketname, ticketcost);
 		}
-		request.setAttribute("totalValue", MoneyBag.centToEuro(t.getTotalValue()));
+		request.setAttribute("totalValue", t.getTotalValue());
 		SortedMap<Integer, Integer> money = new TreeMap<>();
 		for(int i= 0; i < MoneyBag.money.length; i++) {
 			money.put(MoneyBag.money[i], t.getMoneyLeft(i));

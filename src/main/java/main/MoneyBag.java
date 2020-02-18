@@ -128,6 +128,8 @@ public class MoneyBag {
 	public static float centToEuro(int cent) {
 		return (float) (cent/100.0);
 	}
-	
+	public static String centToString(int cent) {
+		return ""+ (cent/100.0)+"€";
+	}
 	
 }
