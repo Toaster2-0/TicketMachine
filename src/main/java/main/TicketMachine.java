@@ -74,8 +74,9 @@ public class TicketMachine {
 		this.storage = storage;
 	}
 	
-	/**loads the file coin.txt and converts it to the Ticketmachine
-	 * 
+	/**loads the file coin.txt and converts it to the Ticketmachine it cant make a ticketmachine or there is no file
+	 *  it creates a  Ticketmachine with 10000, 10000, 10000, 1000, 1000, 1000, 100, 100, 10, 10, 10, 10
+	 * 	and offer "TagesKarte", 50
 	 * @return
 	 */
 	public static TicketMachine load() {
