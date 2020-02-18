@@ -19,14 +19,16 @@
 	<c:out value="you have ${toPay }c left to pay"/><br>
 		<input type="hidden" name="chosenOffer" value="<c:out value='${chosenOffer}'/>" />
 		<input type="hidden" name="toPay" value="<c:out value='${toPay}'/>" />
-     		<input type="text" name="coin" value="" placeholder="Type in your coin" autofocus="autofocus" required />
-     		<input type = "submit" value = "pay">
-     	</form>
+     	<input type="text" name="coin" value="" placeholder="Type in your coin" autofocus="autofocus" required />
+     	<input type = "submit" value = "pay">
+     </form>
      	<c:forEach var="thisCoin" items="${money }">
-      	<form action="<c:url value='/tickets.do'/>" method="post">
-      	<input type="hidden" name="coin" value="${thisCoin }"/>
-      	<input type="submit" value="${thisCoin }">
-      	</form>
+	      	<form action="<c:url value='/tickets.do'/>" method="post">
+	     	 	<input type="hidden" name="chosenOffer" value="<c:out value='${chosenOffer}'/>" />
+				<input type="hidden" name="toPay" value="<c:out value='${toPay}'/>" />
+		      	<input type="hidden" name="coin" value="${thisCoin }"/>
+		      	<input type="submit" value="${thisCoin }">
+	      	</form>
      	</c:forEach>
 </c:if>
 
