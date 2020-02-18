@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 total Value: <c:out value="${totalValue }c"></c:out><br>
+<%--the list of cash in vault and possibilities to change --%>
 <table>
 	<c:forEach var="coin" items="${coins }">
 		<tr>
@@ -30,6 +31,7 @@ total Value: <c:out value="${totalValue }c"></c:out><br>
 	</c:forEach>
 </table>
 <br>
+<%--showing available offers --%>
 Offers:
 <form action="<c:url value='/service.do'/>" method="post" id="newOffer"></form>
 <table>
@@ -51,6 +53,7 @@ Offers:
 				</td>
 			</tr>
 	</c:forEach>
+	<%--adding new Offers --%>
 		<tr>
 			<td ALIGN="RIGHT">
 				<input name="ticketname" type="text" value="" placeholder="Ticketname" required form="newOffer">

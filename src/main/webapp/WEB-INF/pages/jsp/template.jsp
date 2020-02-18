@@ -16,6 +16,7 @@
 				<font color="red"><c:out value="${error }"/></font>
 			</c:if>
             <div id="inhalt">
+            	<%--the really requested site --%>
                 <c:import url="${url}"></c:import>
             </div>    
     </body>
