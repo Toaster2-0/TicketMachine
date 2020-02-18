@@ -24,6 +24,9 @@ public class FrontController extends HttpServlet
 	private static final String LAYOUT_SEITE = "/WEB-INF/pages/jsp/template.jsp";
 	private Map<String, Controller> controller;
 	
+	/**
+	 * puts the respective sites in place
+	 */
 	@Override
 	public void init() throws ServletException {
 		controller = new HashMap<String, Controller>();
@@ -35,7 +38,10 @@ public class FrontController extends HttpServlet
 		System.out.println("Frontcontroller initialisiert");
 		System.out.println(LAYOUT_SEITE);
 	}
-	 
+	
+	/**
+	 * is executed when url ends with .do and calls the respective controller if available else calls error jsp or in case of error with normal sites empty.jsp
+	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		StringBuffer error = new StringBuffer();
@@ -80,7 +86,10 @@ public class FrontController extends HttpServlet
 		RequestDispatcher rd = request.getRequestDispatcher(LAYOUT_SEITE);
 		rd.forward(request, response);
 	}
-
+	
+	/**calls doGet()
+	 * 
+	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		doGet(request, response);
 	}

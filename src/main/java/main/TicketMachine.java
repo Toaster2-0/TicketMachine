@@ -28,6 +28,10 @@ public class TicketMachine {
 		s.save();
 		
 	}
+	
+	/**ausgabe für Console
+	 * 
+	 */
 	public  void start() {
 		System.out.println(WELCOME_MESSAGE);
 		for (Entry<String, Integer> offer : offers.entrySet()) {
@@ -70,6 +74,10 @@ public class TicketMachine {
 		this.storage = storage;
 	}
 	
+	/**loads the file coin.txt and converts it to the Ticketmachine
+	 * 
+	 * @return
+	 */
 	public static TicketMachine load() {
 		TicketMachine s = null;
 		if(TicketMachine.file.dateiExistiert()) {
@@ -89,13 +97,16 @@ public class TicketMachine {
 			try {
 				s.addOffer("TagesKarte", 50);
 			} catch (ValidierungsException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return s;
 		
 	}
+	
+	/**saves the Ticketmachine to the default folder
+	 * 
+	 */
 	public void save() {
 		folder.dateiPfadErstellen();
 		try {
@@ -121,13 +132,25 @@ public class TicketMachine {
 		}
 	}
 	
-	
+	/**
+	 * gets the String of an int and changes the coin ammount in the Moneybag and returns the int of the inserted string
+	 * @param paidAmount the value of the coin which was paid
+	 * @return
+	 * @throws MoneyException
+	 * @throws NumberFormatException
+	 */
 	public Integer pay(String paidAmount) throws MoneyException, NumberFormatException {
 		int value = Integer.parseInt(paidAmount);
 		storage.setMoney(MoneyBag.getIndexByValue(value), storage.getMoneyLeft(MoneyBag.getIndexByValue(value))+1);
 		return value;
 	}
 	
+	/**
+	 * returns a list with the available coins of the change money and changes the value of them in the moneybag
+	 * @param moneyOverPrice
+	 * @return
+	 * @throws MoneyException
+	 */
 	public List<Integer> changeMoney(int moneyOverPrice) throws MoneyException {
 		List<Integer> change = new ArrayList<Integer>();
 		for(int i = MoneyBag.money.length-1; i >= 0; i--) {
@@ -138,17 +161,25 @@ public class TicketMachine {
 			}
 		}
 		if(moneyOverPrice!=0) {
-			throw new MoneyException("not enough coins in vault");
+			throw new MoneyException("not enough Cash in vault");
 		}
 		return change;
 	}
+	/**
+	 * changes the ammount of the stored coins of index to new Value
+	 * @param index
+	 * @param newValue
+	 * @throws MoneyException
+	 */
 	public void setMoney(int index, int newValue) throws MoneyException {
 		if(newValue<0) {
 			throw new MoneyException("you can't insert less than 0");
 		}
 		storage.setMoney(index, newValue);
 	}
-	
+	/**returns the ammount of coins left of index
+	 * 
+	 */
 	public int getMoneyLeft(int index) {
 		try {
 			return storage.getMoneyLeft(index);
@@ -156,12 +187,26 @@ public class TicketMachine {
 			return 0;
 		}
 	}
+	/**returns the Value of stored Money in cents
+	 * 
+	 * @return
+	 */
 	public int getTotalValue() {
 		return storage.getTotalValue();
 	}
+	/**
+	 * removes the Offer with the inserted title if existing
+	 * @param title
+	 */
 	public void removeOffer(String title) {
 		offers.remove(title);
 	}
+	/**
+	 * adds a new Offer with the given title and price
+	 * @param title
+	 * @param price
+	 * @throws ValidierungsException
+	 */
 	public void addOffer(String title, int price) throws ValidierungsException {
 		if(title=="") {
 			throw new ValidierungsException("Title can't be emty");
@@ -174,10 +219,18 @@ public class TicketMachine {
 		}
 		offers.put(title, price);
 	}
+	/**
+	 * returns the available offers
+	 * @return
+	 */
 	public Map<String, Integer> getOffers() {
 		return offers;
 	}
-
+	
+	/**
+	 * changes the offers to the new Map given
+	 * @param offers
+	 */
 	public void setOffers(Map<String, Integer> offers) {
 		this.offers = offers;
 	}

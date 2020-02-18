@@ -13,7 +13,7 @@
 	</c:forEach>
 	<c:if test="${chosenOffer!=null&&toPay>0}">
 		<form action="<c:url value='/tickets.do'/>" method="post">
-		<c:out value="you have ${toPay } left to pay"/><br>
+		<c:out value="you have ${toPay }c left to pay"/><br>
 			<input type="hidden" name="chosenOffer" value="<c:out value='${chosenOffer}'/>" />
 			<input type="hidden" name="toPay" value="<c:out value='${toPay}'/>" />
       		<input type="text" name="coin" value="" placeholder="Type in your coin" autofocus="autofocus" required />

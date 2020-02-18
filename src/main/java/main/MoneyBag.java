@@ -1,5 +1,7 @@
 package main;
 
+import java.text.DecimalFormat;
+
 import exceptions.MoneyException;
 
 public class MoneyBag {
@@ -16,6 +18,22 @@ public class MoneyBag {
 	private int twentyEuro;
 	private int fiftyEuro;
 	public static int[] money = {1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000};
+	
+	/**Saves the ammount of Money left in the Vault and does some money functions
+	 * 
+	 * @param oneCent
+	 * @param twoCent
+	 * @param fiveCent
+	 * @param tenCent
+	 * @param twentyCent
+	 * @param fiftyCent
+	 * @param oneEuro
+	 * @param twoEuro
+	 * @param fiveEuro
+	 * @param tenEuro
+	 * @param twentyEuro
+	 * @param fiftyEuro
+	 */
 	public MoneyBag(int oneCent, int twoCent, int fiveCent, int tenCent, int twentyCent, int fiftyCent, int oneEuro,
 			int twoEuro, int fiveEuro, int tenEuro, int twentyEuro, int fiftyEuro) {
 		super();
@@ -33,6 +51,10 @@ public class MoneyBag {
 		this.fiftyEuro = fiftyEuro;
 	}
 	
+	/**total Value stored in Vault
+	 * 
+	 * @return
+	 */
 	public int getTotalValue() {
 		int totalValue=0;
 		for (int i= 0; i < money.length;i++) {
@@ -44,14 +66,27 @@ public class MoneyBag {
 		return totalValue;
 	}
 	
+	/**get index of a coin
+	 * 
+	 * @param value
+	 * @return
+	 * @throws MoneyException
+	 */
 	public static int getIndexByValue(int value) throws MoneyException {
 		for(int i = 0; i < money.length; i++) {
 			if(money[i]==value) {
 				return i;
 			}
 		}
-		throw new MoneyException("I guess here is a counterfeiter, because this is no coin");
+		throw new MoneyException("I guess here is a counterfeiter, because this is no Cash");
 	}
+	
+	/**put a new ammount of a coin in the bank
+	 * 
+	 * @param index
+	 * @param newValue
+	 * @throws MoneyException
+	 */
 	public void setMoney(int index, int newValue) throws MoneyException {
 		switch (index) {
 		case 0:
@@ -94,7 +129,13 @@ public class MoneyBag {
 			throw new MoneyException("There are only coins until 50 Euros");
 		}
 	}
-		
+	
+	/**get ammount of coins left of index
+	 * 
+	 * @param index
+	 * @return
+	 * @throws MoneyException
+	 */
 	public int getMoneyLeft(int index) throws MoneyException {
 		switch (index) {
 		case 0:
@@ -125,11 +166,21 @@ public class MoneyBag {
 			throw new MoneyException("There are only coins until 50 Euros");
 		}
 	}
+	
+	/**
+	 * divides cent by 100
+	 * @param cent
+	 * @return
+	 */
 	public static float centToEuro(int cent) {
 		return (float) (cent/100.0);
 	}
+	/**
+	 * returns a String formatted to a Eurovalue
+	 */
 	public static String centToString(int cent) {
-		return ""+ (cent/100.0)+"€";
+		DecimalFormat f = new DecimalFormat("#0.00");
+		return ""+ f.format(cent/100.0)+"€";
 	}
 	
 }

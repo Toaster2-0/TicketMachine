@@ -8,6 +8,9 @@ import main.TicketMachine;
 
 public class TicketController implements Controller {
 
+	/**provides the required attributes and functions of the ticketsite
+	 * 
+	 */
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
