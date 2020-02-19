@@ -29,7 +29,7 @@ public class TicketMachine {
 		
 	}
 	
-	/**ausgabe für Console
+	/**outstream for Console (probaply outdated)
 	 * 
 	 */
 	public  void start() {
